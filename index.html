@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="./js/terrain.js"></script>
+    </head>
+
+    <body>
+        <a-scene>
+
+            <a-entity id="look" look-controls camera position="0 20 60"></a-entity>
+            <a-sky color="lightblue"></a-sky>
+
+            <a-assets timeout="10000">        
+                <a-asset-item
+                  id="terrainMap"
+                  src="./assets/Terrain/scene.gltf"
+                ></a-asset-item>
+        
+                <a-asset-item
+                  id="player"
+                  src="./assets/player/scene.gltf"
+                ></a-asset-item>
+                
+              </a-assets>
+        
+              <!-- Terrain-------->
+              <a-entity
+                id="terrain"
+                gltf-model="#terrainMap"
+                position="0 0 0"
+                scale="0.3 0.3 0.3"
+                animation="property: position; to: 0 0 500;easing:linear; loop: true; dur: 600000"
+                terrain-rotation-reader
+              >
+              </a-entity>
+        
+              <!---- Player-------->
+              <a-entity
+                id="plane-model"
+                gltf-model="#player"
+                rotation="0 90 0"
+                position="3 18.5 60"
+                scale="5 5 5"
+                player-rotation-reader
+              ></a-entity>
+        </a-scene>
+    </body>
+
+</html>
